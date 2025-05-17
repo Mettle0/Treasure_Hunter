@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmmirgcbk7253"]
+
+[ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="1_u52ul"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
+sky_top_color = Color(0.244459, 0.480406, 0.59416, 1)
+sky_horizon_color = Color(0.669157, 0.720115, 0.744138, 1)
+ground_bottom_color = Color(0.244476, 0.212364, 0.1947, 1)
+ground_horizon_color = Color(0.669157, 0.720115, 0.744138, 1)
+
+[sub_resource type="Sky" id="Sky_u52ul"]
+sky_material = SubResource("ProceduralSkyMaterial_5xgho")
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+background_mode = 2
+sky = SubResource("Sky_u52ul")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u52ul"]
+size = Vector3(40, 0.5, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vonw3"]
+size = Vector3(10, 10, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vonw3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.996052, 0.0739405, -0.0491259, 7.19936e-09, 0.553392, 0.832921, 0.0887725, -0.829633, 0.551207, 0, 14.1593, 9.71208)
+light_color = Color(0.860009, 0.865831, 0.821971, 1)
+shadow_enabled = true
+
+[node name="Entities" type="Node3D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("1_u52ul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154809, 0)
+
+[node name="Stage" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Stage/StaticBody3D"]
+size = Vector3(40, 0.5, 40)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D"]
+shape = SubResource("BoxShape3D_u52ul")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Stage"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Stage/StaticBody3D2"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(10, 10, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stage/StaticBody3D2"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+shape = SubResource("BoxShape3D_vonw3")
