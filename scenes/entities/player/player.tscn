@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs3vnoy4msd86"]
+[gd_scene load_steps=6 format=3 uid="uid://cs3vnoy4msd86"]
 
 [ext_resource type="Script" uid="uid://btl7mv83pw3s1" path="res://scenes/entities/player/player.gd" id="1_1hmtu"]
 [ext_resource type="PackedScene" uid="uid://bwy3f27xl2v0k" path="res://scenes/entities/player/camera_controller.tscn" id="2_635qg"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_635qg"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yel1f"]
+material = SubResource("StandardMaterial3D_635qg")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1hmtu"]
 
