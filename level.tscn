@@ -156,6 +156,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 7, -18)
 size = Vector3(6, 2, 6)
 material = SubResource("StandardMaterial3D_km5ld")
 
+[node name="CSGBox3D8" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 1, 72)
+size = Vector3(6, 2, 6)
+material = SubResource("StandardMaterial3D_km5ld")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, 1, -77)
+size = Vector3(6, 2, 6)
+material = SubResource("StandardMaterial3D_km5ld")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
 transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -50, 1, 0)
 shape = SubResource("BoxShape3D_i2t4f")
@@ -183,3 +193,67 @@ shape = SubResource("BoxShape3D_i2t4f")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
 transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -20, 7, -18)
 shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 7, -36)
+size = Vector3(6, 2, 6)
+material = SubResource("StandardMaterial3D_km5ld")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -20, 7, -36)
+shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 9, -42)
+size = Vector3(6, 2, 6)
+material = SubResource("StandardMaterial3D_km5ld")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -20, 9, -42)
+shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 11, -48)
+size = Vector3(6, 2, 6)
+material = SubResource("StandardMaterial3D_km5ld")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -20, 11, -48)
+shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 13, -48)
+size = Vector3(6, 2, 6)
+material = SubResource("StandardMaterial3D_km5ld")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -14, 13, -48)
+shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -73, 1, 72)
+shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -77, 1, -77)
+shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="Spawn_01" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 4, 0)
+
+[node name="Spawn_02" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 9, -18)
+
+[node name="Spawn_03" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 9, -18)
+
+[node name="Spawn_04" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 15, -48)
+
+[node name="Spawn_05" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, 3, -77)
+
+[node name="Spawn_06" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 3, 72)
