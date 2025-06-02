@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcxtstv02oxwd"]
+
+[ext_resource type="Script" uid="uid://11hb48ib0rh8" path="res://location_manager.gd" id="1_eak5t"]
+
+[node name="Location Manager" type="Node3D"]
+script = ExtResource("1_eak5t")
