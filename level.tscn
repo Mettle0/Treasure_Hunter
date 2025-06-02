@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://usp2ffqqfe2n" path="res://resources/Red Tile.png" id="2_vonw3"]
 [ext_resource type="Texture2D" uid="uid://bxf8hyrh2a8xo" path="res://resources/Yellow Tile.png" id="3_oi3di"]
 [ext_resource type="Texture2D" uid="uid://clkdu2vui5bxs" path="res://resources/Blue.png" id="4_0b4ue"]
-[ext_resource type="PackedScene" path="res://location_manager.tscn" id="5_f2txt"]
+[ext_resource type="PackedScene" uid="uid://bcxtstv02oxwd" path="res://location_manager.tscn" id="5_f2txt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
 sky_top_color = Color(0.244459, 0.480406, 0.59416, 1)
