@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmmirgcbk7253"]
+[gd_scene load_steps=21 format=3 uid="uid://dmmirgcbk7253"]
 
 [ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="1_u52ul"]
 [ext_resource type="Texture2D" uid="uid://usp2ffqqfe2n" path="res://resources/Red Tile.png" id="2_vonw3"]
 [ext_resource type="Texture2D" uid="uid://bxf8hyrh2a8xo" path="res://resources/Yellow Tile.png" id="3_oi3di"]
 [ext_resource type="Texture2D" uid="uid://clkdu2vui5bxs" path="res://resources/Blue.png" id="4_0b4ue"]
+[ext_resource type="Script" uid="uid://ckwbfec4j6jqx" path="res://location_manager.gd" id="5_f2txt"]
+[ext_resource type="Script" uid="uid://icsl251lmlgu" path="res://location.gd" id="6_1ainy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
 sky_top_color = Color(0.244459, 0.480406, 0.59416, 1)
@@ -68,6 +70,7 @@ shadow_enabled = true
 
 [node name="Player" parent="Entities" instance=ExtResource("1_u52ul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154809, 0)
+base_speed = 15.0
 
 [node name="BetaMap001" type="Node3D" parent="."]
 
@@ -183,3 +186,31 @@ shape = SubResource("BoxShape3D_i2t4f")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
 transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -20, 7, -18)
 shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="Location Manager" type="Node3D" parent="BetaMap001"]
+script = ExtResource("5_f2txt")
+
+[node name="L1" type="Node3D" parent="BetaMap001/Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3857, 9.22946, -22.5228)
+script = ExtResource("6_1ainy")
+metadata/_custom_type_script = "uid://icsl251lmlgu"
+
+[node name="L2" type="Node3D" parent="BetaMap001/Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.6647, 3.75824, 0)
+script = ExtResource("6_1ainy")
+metadata/_custom_type_script = "uid://icsl251lmlgu"
+
+[node name="L3" type="Node3D" parent="BetaMap001/Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5496, 8.39541, -22.5807)
+script = ExtResource("6_1ainy")
+metadata/_custom_type_script = "uid://icsl251lmlgu"
+
+[node name="L4" type="Node3D" parent="BetaMap001/Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.24, 9.12543, -21.4656)
+script = ExtResource("6_1ainy")
+metadata/_custom_type_script = "uid://icsl251lmlgu"
+
+[node name="L5" type="Node3D" parent="BetaMap001/Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.3509, 1.67914, 0)
+script = ExtResource("6_1ainy")
+metadata/_custom_type_script = "uid://icsl251lmlgu"
