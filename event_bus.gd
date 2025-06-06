@@ -2,4 +2,4 @@ extends Node
 
 
 #===ITEM COLLECTION SIGNALS===
-signal treasure_collected
+signal treasure_collected(itemID)
