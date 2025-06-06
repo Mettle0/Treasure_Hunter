@@ -233,3 +233,18 @@ shape = SubResource("BoxShape3D_aicyk")
 debug_fill = false
 
 [node name="Location Manager" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="L1" type="Node3D" parent="Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.9674, 9.32769, -16.7441)
+
+[node name="L2" type="Node3D" parent="Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5902, 4.00109, 0)
+
+[node name="L3" type="Node3D" parent="Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.3619, 8.85104, -17.3354)
+
+[node name="L4" type="Node3D" parent="Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0693, 9.11899, -17.9946)
+
+[node name="L5" type="Node3D" parent="Location Manager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.854, 0, 0)

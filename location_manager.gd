@@ -5,11 +5,10 @@ extends Node3D
 const TREASURE = preload("res://scenes/objects/treasure.tscn")
 
 
-
-
-
 func _ready() -> void:
 	#Todo: Add comments
+	EventBus.treasure_collected.connect(_on_treasure_collected)
+	
 	locations = get_children()
 	var treasure_set: Array
 	treasure_set = get_locations()
@@ -26,3 +25,6 @@ func get_locations() -> Array:
 
 func spawn_treasure() -> void:
 	pass
+
+func _on_treasure_collected() -> void:
+	print("Treasure Collected")
