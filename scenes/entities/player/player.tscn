@@ -10,7 +10,8 @@ material = SubResource("StandardMaterial3D_635qg")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1hmtu"]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+collision_mask = 3
 script = ExtResource("1_1hmtu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
