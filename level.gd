@@ -6,6 +6,7 @@ extends Node3D
 
 func _ready() -> void:
 	EventBus.treasure_collected.connect(_on_treasure_collected)
+	EventBus.stage_buttonPressed.connect(_on_stage_buttonPressed)
 	
 	
 	
@@ -15,3 +16,6 @@ func _on_treasure_collected() -> void:
 	if item_count >= item_count_target:
 		print("Level Complete")
 		EventBus.level_complete.emit()
+		
+func _on_stage_buttonPressed(buttonID) -> void:
+	print("Button " + str(buttonID.name) + " was pressed")
