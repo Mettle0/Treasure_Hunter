@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmmirgcbk7253"]
+[gd_scene load_steps=8 format=3 uid="uid://dmmirgcbk7253"]
 
+[ext_resource type="Script" uid="uid://da8frvui0ch7p" path="res://level.gd" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://rfvtu2ug6cdd" path="res://beta_map_001_col.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://bcxtstv02oxwd" path="res://location_manager.tscn" id="5_f2txt"]
@@ -20,6 +21,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_0b4ue")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vonw3")
@@ -37,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154809, 0)
 [node name="Location Manager" parent="." instance=ExtResource("5_f2txt")]
 
 [node name="L1" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5536, 9.44751, -38.0244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5536, 1.59139, -24.1685)
 
 [node name="L2" type="Node3D" parent="Location Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8017, 1.45996, 27.9367)

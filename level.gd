@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var item_count_target: int
+@export var item_count_target: int = 3
 @onready var item_count: int = 0
 
 
