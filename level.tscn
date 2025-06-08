@@ -1,9 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://dmmirgcbk7253"]
+[gd_scene load_steps=7 format=3 uid="uid://dmmirgcbk7253"]
 
 [ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="1_u52ul"]
-[ext_resource type="Texture2D" uid="uid://usp2ffqqfe2n" path="res://resources/Red Tile.png" id="2_vonw3"]
-[ext_resource type="Texture2D" uid="uid://bxf8hyrh2a8xo" path="res://resources/Yellow Tile.png" id="3_oi3di"]
-[ext_resource type="Texture2D" uid="uid://clkdu2vui5bxs" path="res://resources/Blue.png" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://rfvtu2ug6cdd" path="res://beta_map_001_col.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://bcxtstv02oxwd" path="res://location_manager.tscn" id="5_f2txt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
@@ -21,54 +19,6 @@ sky = SubResource("Sky_u52ul")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_oi3di"]
-albedo_texture = ExtResource("2_vonw3")
-uv1_scale = Vector3(20, 20, 20)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u52ul"]
-size = Vector3(160, 0.5, 160)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0b4ue"]
-albedo_texture = ExtResource("3_oi3di")
-uv1_scale = Vector3(1, 20, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2txt"]
-albedo_texture = ExtResource("3_oi3di")
-uv1_scale = Vector3(1, 20, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ainy"]
-albedo_texture = ExtResource("3_oi3di")
-uv1_scale = Vector3(1, 20, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6hdu"]
-albedo_texture = ExtResource("3_oi3di")
-uv1_scale = Vector3(1, 20, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vonw3"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_oi3di"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0b4ue"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_km5ld"]
-albedo_texture = ExtResource("4_0b4ue")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i2t4f"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2t4f"]
-albedo_texture = ExtResource("4_0b4ue")
-uv1_scale = Vector3(5, 2, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cye3"]
-albedo_texture = ExtResource("4_0b4ue")
-uv1_scale = Vector3(5, 2, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2orkt"]
-albedo_texture = ExtResource("4_0b4ue")
-uv1_scale = Vector3(5, 2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aicyk"]
-
 [node name="Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -84,167 +34,21 @@ shadow_enabled = true
 [node name="Player" parent="Entities" instance=ExtResource("1_u52ul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154809, 0)
 
-[node name="BetaMap001" type="Node3D" parent="."]
-
-[node name="BetaMap_001 Floor" type="StaticBody3D" parent="BetaMap001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Floor"]
-size = Vector3(160, 0.5, 160)
-material = SubResource("ORMMaterial3D_oi3di")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Floor"]
-shape = SubResource("BoxShape3D_u52ul")
-
-[node name="BetaMap_001 Walls" type="StaticBody3D" parent="BetaMap001"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 3, 0)
-size = Vector3(1, 6, 160)
-material = SubResource("StandardMaterial3D_0b4ue")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 3, 0)
-size = Vector3(1, 6, 160)
-material = SubResource("StandardMaterial3D_f2txt")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, -80)
-size = Vector3(1, 6, 160)
-material = SubResource("StandardMaterial3D_1ainy")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, 80)
-size = Vector3(1, 6, 160)
-material = SubResource("StandardMaterial3D_n6hdu")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 160, -80, 3, 0)
-shape = SubResource("BoxShape3D_vonw3")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 160, 80, 3, 0)
-shape = SubResource("BoxShape3D_oi3di")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(160, 0, 0, 0, 6, 0, 0, 0, 1, 0, 3, -80)
-shape = SubResource("BoxShape3D_0b4ue")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Walls"]
-transform = Transform3D(160, 0, 0, 0, 6, 0, 0, 0, 1, 0, 3, 80)
-shape = SubResource("BoxShape3D_0b4ue")
-
-[node name="BetaMap_001 Platforms" type="StaticBody3D" parent="BetaMap001"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 1, 0)
-size = Vector3(6, 2, 6)
-material = SubResource("StandardMaterial3D_km5ld")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 3, -6)
-size = Vector3(6, 2, 6)
-material = SubResource("StandardMaterial3D_km5ld")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 5, -12)
-size = Vector3(6, 2, 6)
-material = SubResource("StandardMaterial3D_km5ld")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 7, -18)
-size = Vector3(6, 2, 6)
-material = SubResource("StandardMaterial3D_km5ld")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 7, -18)
-size = Vector3(6, 2, 6)
-material = SubResource("StandardMaterial3D_km5ld")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 7, -18)
-size = Vector3(6, 2, 6)
-material = SubResource("StandardMaterial3D_km5ld")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 7, -18)
-size = Vector3(6, 2, 6)
-material = SubResource("StandardMaterial3D_km5ld")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -50, 1, 0)
-shape = SubResource("BoxShape3D_i2t4f")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -50, 3, -6)
-shape = SubResource("BoxShape3D_i2t4f")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -50, 5, -12)
-shape = SubResource("BoxShape3D_i2t4f")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -50, 7, -18)
-shape = SubResource("BoxShape3D_i2t4f")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -32, 7, -18)
-shape = SubResource("BoxShape3D_i2t4f")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -26, 7, -18)
-shape = SubResource("BoxShape3D_i2t4f")
-
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Platforms"]
-transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, -20, 7, -18)
-shape = SubResource("BoxShape3D_i2t4f")
-
-[node name="BetaMap_001 Tunnels" type="StaticBody3D" parent="BetaMap001"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Tunnels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 56)
-material_override = SubResource("StandardMaterial3D_i2t4f")
-lod_bias = 0.001
-size = Vector3(24, 6, 1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Tunnels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 50)
-material_override = SubResource("StandardMaterial3D_8cye3")
-size = Vector3(24, 6, 1)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="BetaMap001/BetaMap_001 Tunnels"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.5, 53)
-material_override = SubResource("StandardMaterial3D_2orkt")
-size = Vector3(24, 7, 1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Tunnels"]
-transform = Transform3D(24, 0, 0, 0, 6, 0, 0, 0, 1, 0, 3, 56)
-shape = SubResource("BoxShape3D_aicyk")
-debug_fill = false
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Tunnels"]
-transform = Transform3D(24, 0, 0, 0, 6, 0, 0, 0, 1, 0, 3, 50)
-shape = SubResource("BoxShape3D_aicyk")
-debug_fill = false
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="BetaMap001/BetaMap_001 Tunnels"]
-transform = Transform3D(24, 0, 0, 0, -3.0598e-07, -1, 0, 7, -4.37114e-08, 0, 6.5, 53)
-shape = SubResource("BoxShape3D_aicyk")
-debug_fill = false
-
 [node name="Location Manager" parent="." instance=ExtResource("5_f2txt")]
 
 [node name="L1" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.9674, 9.32769, -16.7441)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5536, 9.44751, -38.0244)
 
 [node name="L2" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5902, 4.00109, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8017, 1.45996, 27.9367)
 
 [node name="L3" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.3619, 8.85104, -17.3354)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.137604, 5.84103, -12.1424)
 
 [node name="L4" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0693, 9.11899, -17.9946)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42911, 7.66793, 31.0492)
 
 [node name="L5" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.854, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.4063, 4.40865, 61.745)
+
+[node name="Beta_Map_001-col" parent="." instance=ExtResource("3_oi3di")]
