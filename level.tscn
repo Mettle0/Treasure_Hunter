@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmmirgcbk7253"]
+[gd_scene load_steps=18 format=3 uid="uid://dmmirgcbk7253"]
 
 [ext_resource type="Script" uid="uid://da8frvui0ch7p" path="res://level.gd" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="1_u52ul"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://tguh8d76kfd7" path="res://resources/Green Tile.png" id="5_1ainy"]
 [ext_resource type="PackedScene" uid="uid://bcxtstv02oxwd" path="res://location_manager.tscn" id="5_f2txt"]
 [ext_resource type="Script" uid="uid://drgb4gi5qyoup" path="res://moving_platform.gd" id="5_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://ds4t4ph5leiso" path="res://resources/Beta-Button.glb" id="7_n6hdu"]
+[ext_resource type="Script" uid="uid://cv8l5fv2cat86" path="res://resources/beta_button_col.gd" id="8_km5ld"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
 sky_top_color = Color(0.244459, 0.480406, 0.59416, 1)
@@ -24,7 +26,7 @@ glow_enabled = true
 
 [sub_resource type="Animation" id="Animation_n6hdu"]
 resource_name = "Elevator"
-length = 4.0
+length = 6.0
 loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -32,7 +34,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("StaticBody3D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.122274, 0, 1.96667, 1, 0, 7.29848, 0, 3.96667, 1, 0, -0.122262, 0)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.122274, 0, 1.96667, 1, 0, 7.29848, 0, 3, 1, 0, 7.29848, 0, 5, 1, 0, -0.122262, 0)
 
 [sub_resource type="Animation" id="Animation_km5ld"]
 length = 0.001
@@ -60,7 +62,8 @@ uv1_scale = Vector3(6, 3, 3)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_0b4ue")
-item_count_target = 3
+
+[node name="Beta_Map_001-col" parent="." instance=ExtResource("3_oi3di")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vonw3")
@@ -92,8 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8654, 4.56408, 24.2188)
 [node name="L5" type="Node3D" parent="Location Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0881, 0.435634, 61.745)
 
-[node name="Beta_Map_001-col" parent="." instance=ExtResource("3_oi3di")]
-
 [node name="Moving Platform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6064, 0, -38.0505)
 script = ExtResource("5_n6hdu")
@@ -115,3 +116,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_2orkt")
 mesh = SubResource("BoxMesh_aicyk")
 skeleton = NodePath("../..")
+
+[node name="Button Platform" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Button Platform"]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 3, -37.981, -0.122274, -30.9233)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Button Platform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_8cye3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Button Platform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_2orkt")
+mesh = SubResource("BoxMesh_aicyk")
+skeleton = NodePath("../..")
+
+[node name="Beta-Button" parent="." instance=ExtResource("7_n6hdu")]
+transform = Transform3D(0.512343, 0, 0, 0, 0.512343, 0, 0, 0, 0.512343, -42.6551, -0.0167341, -6.13437)
+script = ExtResource("8_km5ld")
+
+[editable path="Beta-Button"]
