@@ -85,7 +85,7 @@ shadow_enabled = true
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("1_u52ul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154809, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1829, 5.64515, 11.8862)
 base_speed = 15.0
 
 [node name="BetaMap001" type="Node3D" parent="."]
