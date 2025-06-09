@@ -1,7 +1,6 @@
-extends Node3D
+extends AnimatableBody3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
-
+@onready var buttonState: bool
 
 
 
@@ -15,9 +14,11 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_stage_buttonPressed(buttonID) -> void:
-	animation_player.play("Elevator")
-	var SoundButton = AudioStreamPlayer.new()
-	SoundButton.stream = preload("res://resources/ButtonBeep.mp3")
-	add_child(SoundButton)
-	SoundButton.play()
+	if buttonState == false:
+		buttonState = true
+		animation_player.play("Elevator")
+		var SoundButton = AudioStreamPlayer.new()
+		SoundButton.stream = preload("res://resources/ButtonBeep.mp3")
+		add_child(SoundButton)
+		SoundButton.play()
 	

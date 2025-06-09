@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://btknl3fc12ieq"]
+
+[ext_resource type="Script" uid="uid://drgb4gi5qyoup" path="res://scenes/objects/Stage Interactables/platform.gd" id="1_wcjdu"]
+[ext_resource type="Texture2D" uid="uid://tguh8d76kfd7" path="res://resources/Green Tile.png" id="2_by3ey"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8cye3"]
+size = Vector3(3.95844, 1, 3.57666)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2orkt"]
+albedo_texture = ExtResource("2_by3ey")
+uv1_scale = Vector3(6, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aicyk"]
+
+[sub_resource type="Animation" id="Animation_wcjdu"]
+resource_name = "Elevator"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 7.5, 0, 2, 1, 0, 7.5, 0, 3, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_qr7e1"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26sjw"]
+_data = {
+&"Elevator": SubResource("Animation_wcjdu"),
+&"RESET": SubResource("Animation_qr7e1")
+}
+
+[node name="Platform" type="Node3D"]
+
+[node name="Platform" type="AnimatableBody3D" parent="."]
+script = ExtResource("1_wcjdu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0090332)
+shape = SubResource("BoxShape3D_8cye3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
+transform = Transform3D(3.91587, 0, 0, 0, 1, 0, 0, 0, 3.66046, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_2orkt")
+mesh = SubResource("BoxMesh_aicyk")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+libraries = {
+&"": SubResource("AnimationLibrary_26sjw")
+}

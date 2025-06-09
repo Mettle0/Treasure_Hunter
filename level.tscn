@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmmirgcbk7253"]
+[gd_scene load_steps=10 format=3 uid="uid://dmmirgcbk7253"]
 
 [ext_resource type="Script" uid="uid://da8frvui0ch7p" path="res://level.gd" id="1_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="1_u52ul"]
 [ext_resource type="PackedScene" uid="uid://rfvtu2ug6cdd" path="res://beta_map_001_col.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://bcxtstv02oxwd" path="res://location_manager.tscn" id="5_f2txt"]
-[ext_resource type="PackedScene" uid="uid://xigieg11i61g" path="res://scenes/objects/Stage Interactables/moving_platform.tscn" id="5_n6hdu"]
-[ext_resource type="PackedScene" uid="uid://btknl3fc12ieq" path="res://scenes/objects/Stage Interactables/moving platform toggleable.tscn" id="7_km5ld"]
+[ext_resource type="PackedScene" uid="uid://btknl3fc12ieq" path="res://scenes/objects/Stage Interactables/Platform.tscn" id="6_1ainy"]
 [ext_resource type="PackedScene" uid="uid://cgetcn0niro77" path="res://scenes/objects/Stage Interactables/beta_button.tscn" id="7_n6hdu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
@@ -58,11 +57,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8654, 4.56408, 24.2188)
 [node name="L5" type="Node3D" parent="Location Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0881, 0.435634, 61.745)
 
-[node name="Moving Platform" parent="." instance=ExtResource("5_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6064, 0, -38.0505)
-
 [node name="Beta-Button" parent="." instance=ExtResource("7_n6hdu")]
 transform = Transform3D(0.436386, 0, 0, 0, 0.436386, 0, 0, 0, 0.436386, -40.6487, 0, -2.03627)
 
-[node name="Elevator (Toggleable)" parent="." instance=ExtResource("7_km5ld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.228809, -30)
+[node name="Platform" parent="." instance=ExtResource("6_1ainy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4921, 0.499996, -29.8674)
