@@ -62,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0881, 0.435634, 61.745)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.6064, 0, -38.0505)
 
 [node name="Beta-Button" parent="." instance=ExtResource("7_n6hdu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.9432, 0, -1.66529)
+transform = Transform3D(0.436386, 0, 0, 0, 0.436386, 0, 0, 0, 0.436386, -40.6487, 0, -2.03627)
 
 [node name="Elevator (Toggleable)" parent="." instance=ExtResource("7_km5ld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.1838, 0, -31.0933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 0.228809, -30)
