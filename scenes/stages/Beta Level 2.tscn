@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmmirgcbk7253"]
+[gd_scene load_steps=9 format=3 uid="uid://dmmirgcbk7253"]
 
 [ext_resource type="Script" uid="uid://da8frvui0ch7p" path="res://level.gd" id="1_0b4ue"]
-[ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="1_u52ul"]
-[ext_resource type="PackedScene" uid="uid://rfvtu2ug6cdd" path="res://scenes/stages/beta_map_001_col.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://rfvtu2ug6cdd" path="res://scenes/stages/Beta Level 1.tscn" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://bcxtstv02oxwd" path="res://location_manager.tscn" id="5_f2txt"]
 [ext_resource type="PackedScene" uid="uid://btknl3fc12ieq" path="res://scenes/objects/Stage Interactables/Platform.tscn" id="6_1ainy"]
 [ext_resource type="PackedScene" uid="uid://cgetcn0niro77" path="res://scenes/objects/Stage Interactables/beta_button.tscn" id="7_n6hdu"]
@@ -22,7 +21,7 @@ sky = SubResource("Sky_u52ul")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Level" type="Node3D"]
+[node name="Beta Level 2" type="Node3D"]
 script = ExtResource("1_0b4ue")
 
 [node name="Beta_Map_001-col" parent="." instance=ExtResource("3_oi3di")]
@@ -31,14 +30,11 @@ script = ExtResource("1_0b4ue")
 environment = SubResource("Environment_vonw3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.996052, 0.0739405, -0.0491259, 7.19936e-09, 0.553392, 0.832921, 0.0887725, -0.829633, 0.551207, 0, 14.1593, 9.71208)
+transform = Transform3D(0.5147, 0.78526, 0.344166, -0.855246, 0.442, 0.270539, 0.0603218, -0.433593, 0.899088, 0, 14.1593, 9.71208)
 light_color = Color(0.860009, 0.865831, 0.821971, 1)
 shadow_enabled = true
 
 [node name="Entities" type="Node3D" parent="."]
-
-[node name="Player" parent="Entities" instance=ExtResource("1_u52ul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.154809, 0)
 
 [node name="Location Manager" parent="." instance=ExtResource("5_f2txt")]
 
