@@ -9,3 +9,4 @@ signal stage_buttonPressed(buttonID)
 
 #===STAGE MANAGEMENT SIGNALS===
 signal level_complete
+signal switch_level(currentLevel, nextLevel)

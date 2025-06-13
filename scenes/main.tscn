@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsnun84ewregj"]
+[gd_scene load_steps=7 format=3 uid="uid://bsnun84ewregj"]
 
 [ext_resource type="Script" uid="uid://yas8tw3qvd8s" path="res://resources/scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://drb6g58r0dmsm" path="res://resources/scripts/ui.gd" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://cs3vnoy4msd86" path="res://scenes/entities/player/player.tscn" id="3_o6xl0"]
 [ext_resource type="Script" uid="uid://cfa0rjvbc2rvw" path="res://resources/scripts/world.gd" id="4_tipki"]
-[ext_resource type="PackedScene" uid="uid://wfowb54hp8fe" path="res://scenes/stages/Beta Level 2.tscn" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://wfowb54hp8fe" path="res://scenes/stages/Beta Hub.tscn" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dmmirgcbk7253" path="res://scenes/stages/Betal Level 1.tscn" id="6_tefeu"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_tbgi4")
@@ -16,5 +17,6 @@ script = ExtResource("2_tefeu")
 
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("4_tipki")
+StageList = Array[PackedScene]([ExtResource("5_85g3d"), ExtResource("6_tefeu")])
 
-[node name="Beta Level 2" parent="World" instance=ExtResource("5_85g3d")]
+[node name="Beta Hub" parent="World" instance=ExtResource("5_85g3d")]
