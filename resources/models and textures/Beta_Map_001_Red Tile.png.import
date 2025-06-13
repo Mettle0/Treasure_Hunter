@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csu43ejjecrtp"
-path.s3tc="res://.godot/imported/Beta_Map_001_Blue.png-8c23c735d6d3dcaea99631147b4c2960.s3tc.ctex"
+uid="uid://ullfsolcs1vn"
+path.s3tc="res://.godot/imported/Beta_Map_001_Red Tile.png-137f98a8089ea9f20c7c68824eb14a86.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c15467f21c56df31cdbee5bfb191dc37"
+"md5": "a9807a3ae6012407b66ddc4280d7a2a6"
 }
 
 [deps]
 
-source_file="res://resources/Beta_Map_001_Blue.png"
-dest_files=["res://.godot/imported/Beta_Map_001_Blue.png-8c23c735d6d3dcaea99631147b4c2960.s3tc.ctex"]
+source_file="res://resources/models and textures/Beta_Map_001_Red Tile.png"
+dest_files=["res://.godot/imported/Beta_Map_001_Red Tile.png-137f98a8089ea9f20c7c68824eb14a86.s3tc.ctex"]
 
 [params]
 

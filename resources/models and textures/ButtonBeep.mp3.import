@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7j431w8p3mkl"
+path="res://.godot/imported/ButtonBeep.mp3-2b35a9f517e550c8058fe3357799e551.mp3str"
+
+[deps]
+
+source_file="res://resources/models and textures/ButtonBeep.mp3"
+dest_files=["res://.godot/imported/ButtonBeep.mp3-2b35a9f517e550c8058fe3357799e551.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
