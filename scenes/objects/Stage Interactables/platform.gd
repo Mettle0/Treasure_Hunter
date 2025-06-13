@@ -18,7 +18,7 @@ func _on_stage_buttonPressed(buttonID) -> void:
 		buttonState = true
 		animation_player.play("Elevator")
 		var SoundButton = AudioStreamPlayer.new()
-		SoundButton.stream = preload("res://resources/ButtonBeep.mp3")
+		SoundButton.stream = preload("res://resources/sounds/ButtonBeep.mp3")
 		add_child(SoundButton)
 		SoundButton.play()
 	

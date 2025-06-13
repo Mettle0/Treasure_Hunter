@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://hrn834mbas5d"]
+
+[ext_resource type="Script" uid="uid://dtd8lsaxu0r80" path="res://scenes/objects/Stage Interactables/StageTransition.gd" id="1_ps6bu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4xwhy"]
+height = 1.0
+
+[node name="Stage Transition" type="Area3D"]
+script = ExtResource("1_ps6bu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516846, 0)
+shape = SubResource("CylinderShape3D_4xwhy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

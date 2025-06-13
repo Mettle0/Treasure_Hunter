@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://wfowb54hp8fe"]
+[gd_scene load_steps=7 format=3 uid="uid://wfowb54hp8fe"]
 
 [ext_resource type="PackedScene" uid="uid://dvcv0118s052y" path="res://scenes/stages/beta_hub_map.tscn" id="1_3ux61"]
+[ext_resource type="PackedScene" uid="uid://hrn834mbas5d" path="res://scenes/objects/Stage Interactables/Stage Transition.tscn" id="2_dgo5u"]
+[ext_resource type="PackedScene" uid="uid://dmmirgcbk7253" path="res://scenes/stages/Betal Level 1.tscn" id="3_xq4h4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ux61"]
 
@@ -16,7 +18,7 @@ fog_mode = 1
 fog_density = 0.2225
 volumetric_fog_density = 0.0123
 
-[node name="Beta Level 2" type="Node3D"]
+[node name="Beta Hub" type="Node3D"]
 
 [node name="Beta Hub (Map)" parent="." instance=ExtResource("1_3ux61")]
 
@@ -27,3 +29,10 @@ environment = SubResource("Environment_3ux61")
 transform = Transform3D(-0.933013, 0.258819, -0.25, 0.25, 0.965926, 0.0669873, 0.258819, 0, -0.965926, 0, 12, -13)
 light_color = Color(1, 0.909804, 1, 1)
 light_energy = 0.568
+
+[node name="Stage Transition" parent="." instance=ExtResource("2_dgo5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3597, 4.97108, 6.31999)
+Destination = ExtResource("3_xq4h4")
+
+[node name="Start Point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75603, 29.8352)
