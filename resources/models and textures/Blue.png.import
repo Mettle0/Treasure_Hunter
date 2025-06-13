@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci1xf6ylt4l2a"
-path.s3tc="res://.godot/imported/Beta_Map_001-col_Blue.png-587b541d71a090f4967c513b7332687f.s3tc.ctex"
+uid="uid://clkdu2vui5bxs"
+path.s3tc="res://.godot/imported/Blue.png-123d3c8a634ce1c22636509a5446f84b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "c15467f21c56df31cdbee5bfb191dc37"
-}
 
 [deps]
 
-source_file="res://resources/Beta_Map_001-col_Blue.png"
-dest_files=["res://.godot/imported/Beta_Map_001-col_Blue.png-587b541d71a090f4967c513b7332687f.s3tc.ctex"]
+source_file="res://resources/models and textures/Blue.png"
+dest_files=["res://.godot/imported/Blue.png-123d3c8a634ce1c22636509a5446f84b.s3tc.ctex"]
 
 [params]
 

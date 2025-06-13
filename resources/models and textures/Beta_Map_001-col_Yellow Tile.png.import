@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxf8hyrh2a8xo"
-path.s3tc="res://.godot/imported/Yellow Tile.png-e1d43f03b970930a7523f0b0989995df.s3tc.ctex"
+uid="uid://dkgkprllpxbbs"
+path.s3tc="res://.godot/imported/Beta_Map_001-col_Yellow Tile.png-51fc332d8ec6feed29515ada061fadca.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "4d1a3162e9de59d5a998f8a23d0e1246"
+}
 
 [deps]
 
-source_file="res://resources/Yellow Tile.png"
-dest_files=["res://.godot/imported/Yellow Tile.png-e1d43f03b970930a7523f0b0989995df.s3tc.ctex"]
+source_file="res://resources/models and textures/Beta_Map_001-col_Yellow Tile.png"
+dest_files=["res://.godot/imported/Beta_Map_001-col_Yellow Tile.png-51fc332d8ec6feed29515ada061fadca.s3tc.ctex"]
 
 [params]
 

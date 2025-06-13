@@ -1,60 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmmirgcbk7253"]
+[gd_scene load_steps=5 format=3 uid="uid://wfowb54hp8fe"]
 
-[ext_resource type="Script" uid="uid://da8frvui0ch7p" path="res://level.gd" id="1_0b4ue"]
-[ext_resource type="PackedScene" uid="uid://rfvtu2ug6cdd" path="res://scenes/stages/Beta Level 1.tscn" id="3_oi3di"]
-[ext_resource type="PackedScene" uid="uid://bcxtstv02oxwd" path="res://location_manager.tscn" id="5_f2txt"]
-[ext_resource type="PackedScene" uid="uid://btknl3fc12ieq" path="res://scenes/objects/Stage Interactables/Platform.tscn" id="6_1ainy"]
-[ext_resource type="PackedScene" uid="uid://cgetcn0niro77" path="res://scenes/objects/Stage Interactables/beta_button.tscn" id="7_n6hdu"]
+[ext_resource type="PackedScene" uid="uid://dvcv0118s052y" path="res://scenes/stages/beta_hub_map.tscn" id="1_3ux61"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xgho"]
-sky_top_color = Color(0.244459, 0.480406, 0.59416, 1)
-sky_horizon_color = Color(0.669157, 0.720115, 0.744138, 1)
-ground_bottom_color = Color(0.244476, 0.212364, 0.1947, 1)
-ground_horizon_color = Color(0.669157, 0.720115, 0.744138, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ux61"]
 
-[sub_resource type="Sky" id="Sky_u52ul"]
-sky_material = SubResource("ProceduralSkyMaterial_5xgho")
+[sub_resource type="Sky" id="Sky_dgo5u"]
+sky_material = SubResource("ProceduralSkyMaterial_3ux61")
 
-[sub_resource type="Environment" id="Environment_vonw3"]
+[sub_resource type="Environment" id="Environment_3ux61"]
 background_mode = 2
-sky = SubResource("Sky_u52ul")
-tonemap_mode = 2
-glow_enabled = true
+sky = SubResource("Sky_dgo5u")
+ambient_light_color = Color(0.492312, 0.472094, 0.651277, 1)
+ambient_light_sky_contribution = 0.25
+fog_mode = 1
+fog_density = 0.2225
+volumetric_fog_density = 0.0123
 
 [node name="Beta Level 2" type="Node3D"]
-script = ExtResource("1_0b4ue")
 
-[node name="Beta_Map_001-col" parent="." instance=ExtResource("3_oi3di")]
+[node name="Beta Hub (Map)" parent="." instance=ExtResource("1_3ux61")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vonw3")
+environment = SubResource("Environment_3ux61")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.5147, 0.78526, 0.344166, -0.855246, 0.442, 0.270539, 0.0603218, -0.433593, 0.899088, 0, 14.1593, 9.71208)
-light_color = Color(0.860009, 0.865831, 0.821971, 1)
-shadow_enabled = true
-
-[node name="Entities" type="Node3D" parent="."]
-
-[node name="Location Manager" parent="." instance=ExtResource("5_f2txt")]
-
-[node name="L1" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8111, 8.56983, -38.1826)
-
-[node name="L2" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2213, 0.866451, 28.3802)
-
-[node name="L3" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00635433, 5.84103, -11.9963)
-
-[node name="L4" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8654, 4.56408, 24.2188)
-
-[node name="L5" type="Node3D" parent="Location Manager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0881, 0.435634, 61.745)
-
-[node name="Beta-Button" parent="." instance=ExtResource("7_n6hdu")]
-transform = Transform3D(0.436386, 0, 0, 0, 0.436386, 0, 0, 0, 0.436386, -40.6487, 0, -2.03627)
-
-[node name="Platform" parent="." instance=ExtResource("6_1ainy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4921, 0.499996, -29.8674)
+transform = Transform3D(-0.933013, 0.258819, -0.25, 0.25, 0.965926, 0.0669873, 0.258819, 0, -0.965926, 0, 12, -13)
+light_color = Color(1, 0.909804, 1, 1)
+light_energy = 0.568

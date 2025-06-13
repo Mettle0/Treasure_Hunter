@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c8nkrmh26feiy"
-path="res://.godot/imported/Beta-Hub.glb-d7e0b54485e7df1c39e22455c76e149b.scn"
+path="res://.godot/imported/Beta-Hub.glb-d308218794e4425aba2ae9bcfcd4cca8.scn"
 
 [deps]
 
-source_file="res://resources/Beta-Hub.glb"
-dest_files=["res://.godot/imported/Beta-Hub.glb-d7e0b54485e7df1c39e22455c76e149b.scn"]
+source_file="res://resources/models and textures/Beta-Hub.glb"
+dest_files=["res://.godot/imported/Beta-Hub.glb-d308218794e4425aba2ae9bcfcd4cca8.scn"]
 
 [params]
 

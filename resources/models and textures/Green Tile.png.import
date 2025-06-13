@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://usp2ffqqfe2n"
-path.s3tc="res://.godot/imported/Red Tile.png-1beb5b3169e40f44452f33627a046781.s3tc.ctex"
+uid="uid://tguh8d76kfd7"
+path.s3tc="res://.godot/imported/Green Tile.png-4e45127f58698cc16e739f6c891c941b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/Red Tile.png"
-dest_files=["res://.godot/imported/Red Tile.png-1beb5b3169e40f44452f33627a046781.s3tc.ctex"]
+source_file="res://resources/models and textures/Green Tile.png"
+dest_files=["res://.godot/imported/Green Tile.png-4e45127f58698cc16e739f6c891c941b.s3tc.ctex"]
 
 [params]
 
