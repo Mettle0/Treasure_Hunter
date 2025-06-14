@@ -12,7 +12,7 @@ func _ready() -> void:
 func _on_switch_level(currentLevel, nextLevel) -> void:
 	var nextScene = nextLevel.instantiate()
 	var currentScene = get_child(get_children().bsearch(currentLevel))
-	remove_child(currentScene)
+	currentScene.call_deferred("queue_free")
 	add_child(nextScene)
 	
 	

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dwks8ty1a8yda"
-path="res://.godot/imported/Beta_Map_001-col.glb-49e99da2db4fb8709c27ad3fc3df627e.scn"
+uid="uid://dgjo3w6pei4q2"
+path="res://.godot/imported/Beta-Hub-V2.glb-599db00b67cee8f8d459b9d1e7240bca.scn"
 
 [deps]
 
-source_file="res://resources/models and textures/Beta_Map_001-col.glb"
-dest_files=["res://.godot/imported/Beta_Map_001-col.glb-49e99da2db4fb8709c27ad3fc3df627e.scn"]
+source_file="res://resources/models/Beta-Hub-V2.glb"
+dest_files=["res://.godot/imported/Beta-Hub-V2.glb-599db00b67cee8f8d459b9d1e7240bca.scn"]
 
 [params]
 

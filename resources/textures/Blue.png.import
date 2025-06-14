@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clkdu2vui5bxs"
-path.s3tc="res://.godot/imported/Blue.png-123d3c8a634ce1c22636509a5446f84b.s3tc.ctex"
+path.s3tc="res://.godot/imported/Blue.png-a35963c6bf2d701d5d4b5490e6db4cce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/models and textures/Blue.png"
-dest_files=["res://.godot/imported/Blue.png-123d3c8a634ce1c22636509a5446f84b.s3tc.ctex"]
+source_file="res://resources/textures/Blue.png"
+dest_files=["res://.godot/imported/Blue.png-a35963c6bf2d701d5d4b5490e6db4cce.s3tc.ctex"]
 
 [params]
 

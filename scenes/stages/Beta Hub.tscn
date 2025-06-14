@@ -25,14 +25,9 @@ volumetric_fog_density = 0.0123
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3ux61")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.933013, 0.258819, -0.25, 0.25, 0.965926, 0.0669873, 0.258819, 0, -0.965926, 0, 12, -13)
-light_color = Color(1, 0.909804, 1, 1)
-light_energy = 0.568
-
-[node name="Stage Transition" parent="." instance=ExtResource("2_dgo5u")]
+[node name="Stage Transition (Level 1)" parent="." instance=ExtResource("2_dgo5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3597, 4.97108, 6.31999)
 Destination = ExtResource("3_xq4h4")
 
 [node name="Start Point" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75603, 29.8352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75603, 27.7756)

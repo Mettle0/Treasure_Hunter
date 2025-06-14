@@ -6,7 +6,7 @@ extends Area3D
 
 
 func _ready() -> void:
-	currentLevel = get_parent().name
+	currentLevel = get_parent()
 
 
 

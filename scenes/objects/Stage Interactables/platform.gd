@@ -10,10 +10,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
-func _on_stage_buttonPressed(buttonID) -> void:
+func _on_stage_buttonPressed(_buttonID) -> void:
 	if buttonState == false:
 		buttonState = true
 		animation_player.play("Elevator")

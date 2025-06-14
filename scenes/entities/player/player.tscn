@@ -8,7 +8,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yel1f"]
 material = SubResource("StandardMaterial3D_635qg")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1hmtu"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_635qg"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 3
@@ -19,8 +19,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_yel1f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_1hmtu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144043, 0.998355, 0.000361919)
+shape = SubResource("CapsuleShape3D_635qg")
 
 [node name="CameraController" parent="." instance=ExtResource("2_635qg")]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.4, 0)

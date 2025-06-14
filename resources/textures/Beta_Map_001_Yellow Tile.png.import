@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci1xf6ylt4l2a"
-path.s3tc="res://.godot/imported/Beta_Map_001-col_Blue.png-d2d93dbce790b994468ab05b6824e566.s3tc.ctex"
+uid="uid://bqby1ijwb2d6l"
+path.s3tc="res://.godot/imported/Beta_Map_001_Yellow Tile.png-7d54bcc98e13cdd5f9ec495c9c4fee12.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c15467f21c56df31cdbee5bfb191dc37"
+"md5": "4d1a3162e9de59d5a998f8a23d0e1246"
 }
 
 [deps]
 
-source_file="res://resources/models and textures/Beta_Map_001-col_Blue.png"
-dest_files=["res://.godot/imported/Beta_Map_001-col_Blue.png-d2d93dbce790b994468ab05b6824e566.s3tc.ctex"]
+source_file="res://resources/textures/Beta_Map_001_Yellow Tile.png"
+dest_files=["res://.godot/imported/Beta_Map_001_Yellow Tile.png-7d54bcc98e13cdd5f9ec495c9c4fee12.s3tc.ctex"]
 
 [params]
 

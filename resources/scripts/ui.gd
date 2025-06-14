@@ -5,7 +5,7 @@ func _ready() -> void:
 	EventBus.level_complete.connect(_on_level_complete)
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Debug"):
 		var levelComplete = LEVEL_COMPLETE_SCREEN.instantiate()
 		add_child(levelComplete)
