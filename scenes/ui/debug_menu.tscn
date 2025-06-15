@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy5wskn44fctk"]
+
+[ext_resource type="Script" uid="uid://cmmh34xcklyxk" path="res://scenes/ui/debug_menu.gd" id="1_vv2ch"]
+
+[sub_resource type="SystemFont" id="SystemFont_vv2ch"]
+font_names = PackedStringArray("VCR OSD Mono")
+
+[sub_resource type="LabelSettings" id="LabelSettings_e7jr2"]
+font = SubResource("SystemFont_vv2ch")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="Debug Menu" type="CanvasLayer"]
+script = ExtResource("1_vv2ch")
+
+[node name="Radar Values" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 212.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+label_settings = SubResource("LabelSettings_e7jr2")
+autowrap_mode = 3

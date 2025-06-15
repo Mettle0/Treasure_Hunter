@@ -1,17 +1,13 @@
 extends Node
 
 #Get references to all children of main
-@onready var ui: CanvasLayer = $UI
+@onready var ui: Control = $UI
 @onready var player: CharacterBody3D = $Player
 @onready var world: Node3D = $World
 @onready var radar_distance_calc: Timer = $"Global Timers/RadarDistanceCalc"
 
 @onready var current_item_locations: Array
 @onready var radarDistance: Array
-
-
-
-
 
 
 
@@ -22,7 +18,6 @@ func _ready() -> void:
 	
 func _item_positions_received(pos) -> void:
 	current_item_locations = pos
-	print(current_item_locations)
 
 
 func _on_radar_distance_calc_timeout() -> void:
@@ -31,4 +26,5 @@ func _on_radar_distance_calc_timeout() -> void:
 		var distanceVector: Vector3 = loc - player.position
 		var distanceMag = distanceVector.length()
 		radarDistance.append(distanceMag)
-	print(radarDistance)
+	var radarDebug = {"Radar Distance": radarDistance}
+	EventBus.update_debug_info.emit(radarDebug)

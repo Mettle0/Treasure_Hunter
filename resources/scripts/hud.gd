@@ -6,9 +6,7 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Debug"):
-		var levelComplete = LEVEL_COMPLETE_SCREEN.instantiate()
-		add_child(levelComplete)
+	pass
 
 func _on_level_complete() -> void:
 	var levelComplete = LEVEL_COMPLETE_SCREEN.instantiate()
