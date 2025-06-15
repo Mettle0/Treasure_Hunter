@@ -1,8 +1,9 @@
 extends Node
 
 
-#===ITEM COLLECTION SIGNALS===
+#===ITEM SIGNALS===
 signal treasure_collected(itemID)
+signal item_positions(pos: Array)
 
 #===STAGE INTERACTABLE SIGNALS===
 signal stage_buttonPressed(buttonID)

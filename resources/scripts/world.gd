@@ -2,10 +2,11 @@ extends Node3D
 
 
 @export var StageList: Array[PackedScene]
+@export var StartingScene: PackedScene
 
 func _ready() -> void:
 	EventBus.switch_level.connect(_on_switch_level)
-	print(StageList)
+	add_child(StartingScene.instantiate())
 	
 	
 	
