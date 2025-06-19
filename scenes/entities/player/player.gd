@@ -7,9 +7,11 @@ extends CharacterBody3D
 @onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
-@export var base_speed := 9.0
+@export var base_speed :float = 20.0
+@export var acceleration: float = 20.0
 @export var glide_speed : float = -1.5 # Adjust glide descent speed
 @onready var camera = $CameraController/Camera3D
+
 
 var movement_input := Vector2.ZERO
 var is_gliding := false
@@ -21,18 +23,21 @@ func _physics_process(delta: float) -> void:
 	jump_logic(delta)
 	move_and_slide()
 	
-	
 func move_logic(delta) -> void:
 	movement_input = Input.get_vector("left","right","forward","backward").rotated(-camera.global_rotation.y)
 	var vel_2d = Vector2(velocity.x, velocity.z)
 	
-	if movement_input != Vector2.ZERO:
-		vel_2d += movement_input * base_speed * 10 * delta
+	if movement_input.length() < 0.5:
+		vel_2d = movement_input * base_speed
+		velocity.x = vel_2d.x
+		velocity.z = vel_2d.y
+	elif movement_input.length() >= 0.5:
+		vel_2d += movement_input*acceleration*delta
 		vel_2d = vel_2d.limit_length(base_speed)
 		velocity.x = vel_2d.x
 		velocity.z = vel_2d.y
 	else:
-		vel_2d = vel_2d.move_toward(Vector2.ZERO, base_speed * 4.0 * delta)
+		vel_2d = vel_2d.move_toward(Vector2.ZERO, base_speed)
 		velocity.x = vel_2d.x
 		velocity.z = vel_2d.y
 
