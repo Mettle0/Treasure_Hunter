@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 #Jump, movement, and glide variables
