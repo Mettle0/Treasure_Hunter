@@ -10,13 +10,21 @@ extends CharacterBody3D
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 @export var base_speed :float = 10
 @export var glide_speed : float = -1.5 # Adjust glide descent speed
+
+#Get references to other nodes
 @onready var camera = $CameraController/Camera3D
+@onready var state_machine = $"State Machine"
+@onready var animations: AnimatedSprite3D = $Animations
 
 
 var movement_input := Vector2.ZERO
 var is_gliding := false
 
+func _ready() -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
+	
 	
 	#velocity = Vector3(movement_input.x,0,movement_input.y) * base_speed
 	move_logic(delta)

@@ -1,7 +1,7 @@
 extends StateMachine
 
-@onready var player: Player
 
 
-func _ready() -> void:
+
+func init(player: Player) -> void:
 	pass
