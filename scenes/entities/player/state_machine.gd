@@ -1,22 +1,20 @@
-class_name StateMachine
 extends Node
 
-@onready var current_state: int = states.IDLE
+@onready var initial_state: String
+@onready var current_state: String
 
-enum states{
-	IDLE,
-	WALKING,
-	RUNNING,
-	JUMPING,
-	GLIDING
-	}
+
+@export var states: Array[String]
 
 
 func _ready() -> void:
-	pass
+	for state in range(len(states)):
+		states[state] = states[state].to_upper()
+
+func setup(initState: String) -> void:
+	current_state = initState.to_upper()
+	print(current_state)
 	
-func _physics_process(delta: float) -> void:
-	
-	match current_state:
-		states.IDLE:
-			print("Idle")
+func switch_state(state: String) -> void:
+	current_state = state.to_upper()
+	print(current_state)

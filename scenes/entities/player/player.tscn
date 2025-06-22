@@ -35,4 +35,4 @@ max_limit_x = -0.2
 
 [node name="State Machine" type="Node" parent="."]
 script = ExtResource("3_nh4ur")
-metadata/_custom_type_script = "uid://boga78vm8cc6u"
+states = Array[String](["Idle", "Walking", "Running", "Jumping", "Falling", "Gliding"])

@@ -3,6 +3,7 @@ extends Node
 
 
 @export var stateAnimation: String
+@export var stateName: String
 
 @onready var parent: Player
 
@@ -13,11 +14,11 @@ func enter_state() -> void:
 func exit_state() -> void:
 	pass
 
-func _unhandled_input(event: InputEvent) -> void:
-	pass
+func process_inputs(input: InputEvent) -> State:
+	return null
 
-func _process(delta: float) -> void:
-	pass
+func process(delta: float) -> State:
+	return null
 	
-func _physics_process(delta: float) -> void:
-	pass
+func physics_process(delta: float) -> State:
+	return null
