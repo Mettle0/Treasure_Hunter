@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsnun84ewregj"]
+[gd_scene load_steps=8 format=3 uid="uid://bsnun84ewregj"]
 
 [ext_resource type="Script" uid="uid://yas8tw3qvd8s" path="res://resources/scripts/main.gd" id="1_tbgi4"]
 [ext_resource type="Script" uid="uid://2m6ccfatu8qw" path="res://scenes/ui.gd" id="2_tipki"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cfa0rjvbc2rvw" path="res://resources/scripts/world.gd" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://wfowb54hp8fe" path="res://scenes/stages/Beta Hub.tscn" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dmmirgcbk7253" path="res://scenes/stages/Betal Level 1.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://ep4xb686cwv1" path="res://scenes/stages/Beta Canyon/beta_canyon.tscn" id="8_tipki"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_tbgi4")
@@ -30,7 +29,7 @@ visible = false
 
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("4_tipki")
-StageList = Array[PackedScene]([ExtResource("5_85g3d"), ExtResource("6_tefeu"), ExtResource("8_tipki")])
+StageList = Array[PackedScene]([ExtResource("5_85g3d"), ExtResource("6_tefeu")])
 StartingScene = ExtResource("6_tefeu")
 
 [connection signal="timeout" from="Global Timers/RadarDistanceCalc" to="." method="_on_radar_distance_calc_timeout"]

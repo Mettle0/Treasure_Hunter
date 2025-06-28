@@ -7,6 +7,7 @@ signal item_positions(pos: Array)
 
 #===STAGE INTERACTABLE SIGNALS===
 signal stage_buttonPressed(buttonID)
+signal ledge_detected(ledgePosition)
 
 #===STAGE MANAGEMENT SIGNALS===
 signal level_complete

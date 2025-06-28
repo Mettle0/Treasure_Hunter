@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs3vnoy4msd86"]
+[gd_scene load_steps=11 format=3 uid="uid://cs3vnoy4msd86"]
 
 [ext_resource type="Script" uid="uid://btl7mv83pw3s1" path="res://scenes/entities/player/player.gd" id="1_1hmtu"]
 [ext_resource type="PackedScene" uid="uid://bwy3f27xl2v0k" path="res://scenes/entities/player/camera_controller.tscn" id="2_635qg"]
 [ext_resource type="Script" uid="uid://boga78vm8cc6u" path="res://scenes/entities/player/state_machine.gd" id="3_nh4ur"]
 [ext_resource type="Script" uid="uid://ddyi4x13158h4" path="res://scenes/entities/player/area_detection.gd" id="4_nh4ur"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_635qg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nh4ur"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_635qg"]
 
@@ -18,17 +22,29 @@ material = SubResource("StandardMaterial3D_nh4ur")
 radius = 0.125
 height = 0.25
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_635qg"]
-
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_1hmtu")
-jump_height = 3.0
-jump_time_to_descent = 0.4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144043, 0.998355, 0.000361919)
+shape = SubResource("CapsuleShape3D_635qg")
+
+[node name="CameraController" parent="." instance=ExtResource("2_635qg")]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.4, 0)
+min_limit_x = -0.8
+max_limit_x = -0.2
+
+[node name="State Machine" type="Node" parent="."]
+script = ExtResource("3_nh4ur")
+states = Array[String](["Idle", "Walking", "Running", "Jumping", "Falling", "Gliding", "Grabbing Ledge"])
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="CapsuleModel" type="MeshInstance3D" parent="Pivot"]
+[node name="Animations" type="AnimatedSprite3D" parent="Pivot"]
+sprite_frames = SubResource("SpriteFrames_nh4ur")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_yel1f")
 skeleton = NodePath("../..")
@@ -39,39 +55,17 @@ script = ExtResource("4_nh4ur")
 
 [node name="Wall Detection Ray" type="RayCast3D" parent="Pivot/Area Detection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0564574, 0)
-target_position = Vector3(0, 0, -1)
+target_position = Vector3(0, 0, -1.25)
 collision_mask = 2
 collide_with_areas = true
 
 [node name="Ledge Detector" type="Node3D" parent="Pivot/Area Detection"]
 
 [node name="Ledge Detection Ray" type="RayCast3D" parent="Pivot/Area Detection/Ledge Detector"]
-target_position = Vector3(0, -0.75, 0)
+target_position = Vector3(0, -2, 0)
 collision_mask = 3
-hit_back_faces = false
 
 [node name="Ledge Debug Sphere" type="MeshInstance3D" parent="Pivot/Area Detection/Ledge Detector/Ledge Detection Ray"]
 visible = false
 mesh = SubResource("SphereMesh_nh4ur")
 skeleton = NodePath("../../..")
-
-[node name="Cooldowns" type="Node" parent="."]
-
-[node name="Ledge Grab Cooldown" type="Timer" parent="Cooldowns"]
-wait_time = 0.5
-one_shot = true
-
-[node name="State Machine" type="Node" parent="."]
-script = ExtResource("3_nh4ur")
-states = Array[String](["Idle", "Walking", "Running", "Jumping", "Falling", "Gliding", "Grabbing Ledge"])
-
-[node name="CameraController" parent="." instance=ExtResource("2_635qg")]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.4, 0)
-min_limit_x = -0.8
-max_limit_x = -0.2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144043, 0.998355, 0.000361919)
-shape = SubResource("CapsuleShape3D_635qg")
-
-[connection signal="timeout" from="Cooldowns/Ledge Grab Cooldown" to="." method="_on_ledge_grab_cooldown_timeout"]

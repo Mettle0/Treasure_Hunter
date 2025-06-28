@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmirg8p35kb5c"]
+
+[ext_resource type="Script" uid="uid://ddyi4x13158h4" path="res://scenes/entities/player/area_detection.gd" id="1_w2f2m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh4ur"]
+albedo_color = Color(0, 0.90865, 0.537921, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nh4ur"]
+material = SubResource("StandardMaterial3D_nh4ur")
+radius = 0.125
+height = 0.25
+
+[node name="Area Detection" type="Node3D"]
+script = ExtResource("1_w2f2m")
+
+[node name="Wall Detection Ray" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0564574, 0)
+target_position = Vector3(0, 0, -1.25)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="Ledge Detector" type="Node3D" parent="."]
+
+[node name="Ledge Detection Ray" type="RayCast3D" parent="Ledge Detector"]
+target_position = Vector3(0, -2, 0)
+collision_mask = 3
+
+[node name="Ledge Debug Sphere" type="MeshInstance3D" parent="Ledge Detector/Ledge Detection Ray"]
+visible = false
+mesh = SubResource("SphereMesh_nh4ur")
+skeleton = NodePath("../../..")

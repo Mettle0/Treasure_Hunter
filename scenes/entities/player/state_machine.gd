@@ -13,8 +13,7 @@ func _ready() -> void:
 
 func setup(initState: String) -> void:
 	current_state = initState.to_upper()
-	print(current_state)
+	#print(current_state)
 	
 func switch_state(state: String) -> void:
 	current_state = state.to_upper()
-	print(current_state)

@@ -108,6 +108,7 @@ data = PackedVector3Array(-2.0016, 0, 1.9987, 1.9987, 0, -2.0016, 1.9987, 0, 1.9
 [node name="Beta Level 1" type="Node3D"]
 
 [node name="Beta_Map_001-col" type="StaticBody3D" parent="."]
+collision_layer = 2
 
 [node name="Plane" type="MeshInstance3D" parent="Beta_Map_001-col"]
 mesh = SubResource("ArrayMesh_fnxe8")

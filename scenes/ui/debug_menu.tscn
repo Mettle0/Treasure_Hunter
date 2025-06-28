@@ -25,3 +25,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 label_settings = SubResource("LabelSettings_e7jr2")
 autowrap_mode = 3
+
+[node name="Direction Vector" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
