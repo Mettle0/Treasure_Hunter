@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://cqymt7pun0kjw" path="res://scenes/entities/states/idle.gd" id="4_8akj5"]
 [ext_resource type="Script" uid="uid://ddyi4x13158h4" path="res://scenes/entities/player/area_detection.gd" id="4_nh4ur"]
 [ext_resource type="Script" uid="uid://bmymjy7uyesy" path="res://scenes/entities/states/moving.gd" id="5_1murt"]
-[ext_resource type="Script" uid="uid://b8m41vx5h5uar" path="res://scenes/entities/states/jumping.gd" id="6_1murt"]
-[ext_resource type="Script" uid="uid://cjc2duld62knp" path="res://scenes/entities/states/falling.gd" id="7_5sj0x"]
-[ext_resource type="Script" uid="uid://bjws45khr2yh2" path="res://scenes/entities/states/gliding.gd" id="8_5sj0x"]
+[ext_resource type="Script" uid="uid://debxbg80w62ij" path="res://scenes/entities/states/state.gd" id="5_bj7e2"]
+[ext_resource type="Script" uid="uid://b8m41vx5h5uar" path="res://scenes/entities/player/jumping.gd" id="6_1murt"]
+[ext_resource type="Script" uid="uid://cjc2duld62knp" path="res://scenes/entities/player/falling.gd" id="7_5sj0x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_635qg"]
 
@@ -83,11 +83,8 @@ idleState = NodePath("../Idle")
 jumpState = NodePath("../Jumping")
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
-[node name="Jumping" type="Node" parent="State Machine" node_paths=PackedStringArray("idleState", "fallingState", "glidingState")]
+[node name="Jumping" type="Node" parent="State Machine"]
 script = ExtResource("6_1murt")
-idleState = NodePath("../Idle")
-fallingState = NodePath("../Falling")
-glidingState = NodePath("../Gliding")
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
 [node name="Falling" type="Node" parent="State Machine" node_paths=PackedStringArray("idleState", "glideState", "moveState")]
@@ -98,7 +95,7 @@ moveState = NodePath("../Moving")
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
 [node name="Gliding" type="Node" parent="State Machine"]
-script = ExtResource("8_5sj0x")
+script = ExtResource("5_bj7e2")
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
 [node name="CameraController" parent="." instance=ExtResource("2_635qg")]
