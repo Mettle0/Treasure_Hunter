@@ -1,11 +1,15 @@
-class_name State
+class_name ParentState
 extends Node
-
-
-@export var stateAnimation: String
 
 @onready var parent: Player
 @onready var movement: Movement
+
+func setup_substates(parent: Player, movement: Movement) -> void:
+	if not get_children().is_empty():
+		for child: State in get_children():
+			child.parent = parent
+			child.movement = movement
+
 
 func enter_state() -> void:
 	pass

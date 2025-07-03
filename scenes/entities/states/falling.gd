@@ -3,13 +3,16 @@ extends State
 @export var idleState: State
 @export var glideState: State
 @export var moveState: State
+@export var grabbingLedgeState: State
 
 var movement_input: Vector2
 
 func state_physics(delta) -> State:
+	if parent.near_grabbableLedge and parent.can_ledgeGrab:
+		return grabbingLedgeState
+	
 	if Input.is_action_just_pressed("jump"):
 		return glideState
-	
 	horizontal_movement()
 	
 	parent.velocity.y -= parent.fall_gravity * delta

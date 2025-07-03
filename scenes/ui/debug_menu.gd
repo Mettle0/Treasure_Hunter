@@ -2,12 +2,18 @@ extends CanvasLayer
 
 
 @onready var radar_values: Label = $"Radar Values"
-@onready var direction_vector: Label = $"Direction Vector"
+@onready var player_state: Label = $"Player State"
+
 
 func _ready() -> void:
 	EventBus.update_debug_info.connect(_get_debug_info)
+	EventBus.playerStateChange.connect(_update_playerState_debug)
 	
 	
+
+func _update_playerState_debug(currentState: StringName) -> void:
+	player_state.text = "Player State: " + str(currentState)
+
 func _get_debug_info(debugInfo) -> void:
 	var debug_info_radar
 	var debug_info_direction

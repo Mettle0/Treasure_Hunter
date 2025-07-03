@@ -1,15 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy5wskn44fctk"]
+[gd_scene load_steps=3 format=3 uid="uid://dy5wskn44fctk"]
 
 [ext_resource type="Script" uid="uid://cmmh34xcklyxk" path="res://scenes/ui/debug_menu.gd" id="1_vv2ch"]
-
-[sub_resource type="SystemFont" id="SystemFont_vv2ch"]
-font_names = PackedStringArray("VCR OSD Mono")
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_e7jr2"]
-font = SubResource("SystemFont_vv2ch")
-font_size = 24
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="LabelSettings" uid="uid://b8eyr0m702p15" path="res://scenes/ui/debug_label_settings.tres" id="2_e7jr2"]
 
 [node name="Debug Menu" type="CanvasLayer"]
 script = ExtResource("1_vv2ch")
@@ -23,9 +15,10 @@ offset_right = 212.0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
-label_settings = SubResource("LabelSettings_e7jr2")
+label_settings = ExtResource("2_e7jr2")
 autowrap_mode = 3
 
-[node name="Direction Vector" type="Label" parent="."]
+[node name="Player State" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+label_settings = ExtResource("2_e7jr2")

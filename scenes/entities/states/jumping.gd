@@ -3,6 +3,7 @@ extends State
 @export var idleState: State
 @export var fallingState: State
 @export var glidingState: State
+@export var grabbingLedgeState: State
 
 var movement_input: Vector2
 
@@ -12,6 +13,8 @@ func state_physics(delta) -> State:
 	var gravity = parent.jump_gravity if parent.velocity.y > 0.0 else parent.fall_gravity
 	parent.velocity.y -= gravity * delta
 	
+	#if parent.near_grabbableLedge and parent.can_ledgeGrab:
+		#return grabbingLedgeState
 	horizontal_movement()
 	
 	if parent.velocity.y < 0.0:
@@ -27,7 +30,7 @@ func state_physics(delta) -> State:
 
 
 func horizontal_movement() -> void:
-	movement_input = Input.get_vector("left", "right", "forward", "backward").rotated(-parent.camera.global_rotation.y)
+	var movement_input = movement.get_direction()
 	var vel_2d = Vector2(parent.velocity.x, parent.velocity.z)
 	
 	if movement_input:

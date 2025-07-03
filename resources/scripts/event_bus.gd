@@ -15,3 +15,7 @@ signal switch_level(currentLevel, nextLevel)
 
 #===UI SIGNALS===
 signal update_debug_info(debugInfo)
+
+
+#===PLAYER SIGNALS===
+signal playerStateChange(currentState: StringName)

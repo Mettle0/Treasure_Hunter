@@ -2,13 +2,12 @@ extends State
 
 @export var idleState: State
 @export var jumpState: State
+@export var fallState: State
 
-
-var movement_input: Vector2
 
 
 func state_physics(delta: float) -> State:
-	movement_input = Input.get_vector("left", "right", "forward", "backward").rotated(-parent.camera.global_rotation.y)
+	var movement_input = movement.get_direction()
 	var vel_2d = Vector2(parent.velocity.x, parent.velocity.z)
 	
 	if movement_input:
@@ -20,7 +19,10 @@ func state_physics(delta: float) -> State:
 		vel_2d = vel_2d.move_toward(Vector2.ZERO, parent.base_speed)
 		parent.velocity.x = vel_2d.x
 		parent.velocity.z = vel_2d.y
-		
+	
+	if not parent.is_on_floor():
+		return fallState
+	
 	if Input.is_action_just_pressed("jump"):
 		return jumpState
 	elif parent.velocity == Vector3.ZERO:

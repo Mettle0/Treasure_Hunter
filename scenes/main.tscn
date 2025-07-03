@@ -31,6 +31,6 @@ visible = false
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("4_tipki")
 StageList = Array[PackedScene]([ExtResource("5_85g3d"), ExtResource("6_tefeu"), ExtResource("8_tipki")])
-StartingScene = ExtResource("6_tefeu")
+StartingScene = ExtResource("8_tipki")
 
 [connection signal="timeout" from="Global Timers/RadarDistanceCalc" to="." method="_on_radar_distance_calc_timeout"]

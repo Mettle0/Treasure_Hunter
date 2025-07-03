@@ -1,10 +1,11 @@
+class_name CameraController
 extends Node3D
 
 @export var min_limit_x: float
 @export var max_limit_x: float
 @export var horizontal_acceleration := 3.0
 @export var vertical_acceleration := 2.0
-@export var mouse_accesleration := 0.005
+@export var mouse_acceleration := 0.005
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	capture_mouse(event)
 	if event is InputEventMouseMotion:
-		rotate_from_vector(event.relative * mouse_accesleration)
+		rotate_from_vector(event.relative * mouse_acceleration)
 
 func rotate_from_vector(v: Vector2):
 	if v.length() == 0: return
