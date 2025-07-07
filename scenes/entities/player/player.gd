@@ -23,6 +23,7 @@ extends CharacterBody3D
 @onready var ledge_grab_cooldown: Timer = $"Cooldowns/Ledge Grab Cooldown"
 @onready var movement: Movement = $Movement
 @onready var camera_controller: CameraController = $CameraController
+@onready var capsule_model: MeshInstance3D = $Pivot/CapsuleModel
 
 
 

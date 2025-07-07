@@ -8,7 +8,7 @@ extends State
 
 func enter_state() -> void:
 	parent.velocity = Vector3.ZERO
-	parent.position = parent.ledgeGrabPos - Vector3(0, 2.0, 0)
+	parent.global_position = parent.ledgeGrabPos - Vector3(0, 1.5, 0)
 	parent.can_ledgeGrab = false
 	parent.near_grabbableLedge = false
 	
