@@ -26,6 +26,7 @@ func state_physics(delta) -> State:
 
 
 func horizontal_movement_air() -> void:
+	print(parent.velocity)
 	var movement_input = movement.get_direction()
 	var vel_2d = Vector2(parent.velocity.x, parent.velocity.z)
 	
@@ -35,6 +36,7 @@ func horizontal_movement_air() -> void:
 		parent.velocity.z = vel_2d.y*air_movement_factor
 		parent.pivot.look_at(parent.global_position+Vector3(parent.velocity.x,0, parent.velocity.z), Vector3.UP)
 	else:
-		vel_2d = vel_2d.move_toward(Vector2.ZERO, parent.base_speed)
-		parent.velocity.x = vel_2d.x*air_movement_factor
-		parent.velocity.z = vel_2d.y*air_movement_factor
+		vel_2d = vel_2d.lerp(Vector2.ZERO,0.1)
+		#vel_2d = vel_2d.move_toward(Vector2.ZERO, parent.base_speed*0.05)
+		parent.velocity.x = vel_2d.x
+		parent.velocity.z = vel_2d.y
