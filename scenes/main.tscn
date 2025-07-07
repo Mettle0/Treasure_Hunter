@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dy5wskn44fctk" path="res://scenes/ui/debug_menu.tscn" id="3_tipki"]
 [ext_resource type="Script" uid="uid://cfa0rjvbc2rvw" path="res://resources/scripts/world.gd" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://wfowb54hp8fe" path="res://scenes/stages/Beta Hub.tscn" id="5_85g3d"]
-[ext_resource type="PackedScene" uid="uid://dmmirgcbk7253" path="res://scenes/stages/Betal Level 1.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dmmirgcbk7253" path="res://scenes/stages/Beta Level 1.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://ep4xb686cwv1" path="res://scenes/stages/Beta Canyon/beta_canyon.tscn" id="8_tipki"]
 
 [node name="Main" type="Node"]
@@ -31,6 +31,6 @@ visible = false
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("4_tipki")
 StageList = Array[PackedScene]([ExtResource("5_85g3d"), ExtResource("6_tefeu"), ExtResource("8_tipki")])
-StartingScene = ExtResource("8_tipki")
+StartingScene = ExtResource("6_tefeu")
 
 [connection signal="timeout" from="Global Timers/RadarDistanceCalc" to="." method="_on_radar_distance_calc_timeout"]

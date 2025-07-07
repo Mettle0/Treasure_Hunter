@@ -28,6 +28,7 @@ extends CharacterBody3D
 
 
 var ledgeGrabPos: Vector3
+var ledgeGrabNormal: Vector3
 
 
 #Situational awareness checks for the player. What can the player do in this current moment?
@@ -64,17 +65,11 @@ func _on_ledge_grab_cooldown_timeout() -> void:
 	can_ledgeGrab = true
 
 
-
-
-
-func _on_area_detection_facing_ledge(ledgePos: Vector3) -> void:
+func _on_area_detection_facing_ledge(ledgePos: Vector3, ledge_normal: Vector3) -> void:
 	ledgeGrabPos = ledgePos
+	ledgeGrabNormal = ledge_normal
 	near_grabbableLedge = true
 
-
-func _on_area_detection_not_facing_ledge() -> void:
-	near_grabbableLedge = false
-	ledgeGrabPos = Vector3.ZERO
 
 
 func _on_state_machine_state_change(currenStateName: StringName) -> void:

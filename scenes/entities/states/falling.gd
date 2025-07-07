@@ -4,6 +4,7 @@ extends State
 @export var glideState: State
 @export var moveState: State
 @export var grabbingLedgeState: State
+@export var air_movement_factor: float
 
 var movement_input: Vector2
 
@@ -13,7 +14,7 @@ func state_physics(delta) -> State:
 	
 	if Input.is_action_just_pressed("jump"):
 		return glideState
-	horizontal_movement()
+	horizontal_movement_air()
 	
 	parent.velocity.y -= parent.fall_gravity * delta
 	if parent.is_on_floor():
@@ -24,16 +25,16 @@ func state_physics(delta) -> State:
 	return null
 
 
-func horizontal_movement() -> void:
-	movement_input = Input.get_vector("left", "right", "forward", "backward").rotated(-parent.camera.global_rotation.y)
+func horizontal_movement_air() -> void:
+	var movement_input = movement.get_direction()
 	var vel_2d = Vector2(parent.velocity.x, parent.velocity.z)
 	
 	if movement_input:
 		vel_2d = movement_input * parent.base_speed
-		parent.velocity.x = vel_2d.x
-		parent.velocity.z = vel_2d.y
+		parent.velocity.x = vel_2d.x*air_movement_factor
+		parent.velocity.z = vel_2d.y*air_movement_factor
 		parent.pivot.look_at(parent.global_position+Vector3(parent.velocity.x,0, parent.velocity.z), Vector3.UP)
 	else:
 		vel_2d = vel_2d.move_toward(Vector2.ZERO, parent.base_speed)
-		parent.velocity.x = vel_2d.x
-		parent.velocity.z = vel_2d.y
+		parent.velocity.x = vel_2d.x*air_movement_factor
+		parent.velocity.z = vel_2d.y*air_movement_factor
