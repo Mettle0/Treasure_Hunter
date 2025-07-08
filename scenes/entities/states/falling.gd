@@ -3,12 +3,16 @@ extends State
 @export var idleState: State
 @export var glideState: State
 @export var moveState: State
+@export var jumpState: State
 @export var grabbingLedgeState: State
 @export var air_movement_factor: float
 
 var movement_input: Vector2
 
 func state_physics(delta) -> State:
+	if parent.is_on_wall_only() and Input.is_action_just_pressed("jump"):
+		return jumpState
+	
 	if parent.near_grabbableLedge and parent.can_ledgeGrab:
 		return grabbingLedgeState
 	
@@ -26,7 +30,6 @@ func state_physics(delta) -> State:
 
 
 func horizontal_movement_air() -> void:
-	print(parent.velocity)
 	var movement_input = movement.get_direction()
 	var vel_2d = Vector2(parent.velocity.x, parent.velocity.z)
 	

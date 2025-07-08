@@ -9,23 +9,28 @@ extends State
 
 var movement_input: Vector2
 
+func enter_state() -> void:
+	if parent.is_on_wall_only():
+		parent.velocity.x = -parent.jump_velocity*parent.ledgeGrabNormal.x
+		parent.velocity.z = -parent.jump_velocity*parent.ledgeGrabNormal.z
+	parent.velocity.y = -parent.jump_velocity
+
 
 func state_physics(delta) -> State:
-	if parent.is_on_floor() or (parent.is_on_wall_only() and Input.is_action_just_pressed("jump")):
-		parent.velocity.y = -parent.jump_velocity
 	var gravity = parent.jump_gravity if parent.velocity.y > 0.0 else parent.fall_gravity
 	parent.velocity.y -= gravity * delta
-	
-	#if parent.near_grabbableLedge and parent.can_ledgeGrab:
-		#return grabbingLedgeState
+
 	horizontal_movement_air()
-	
+
 	if parent.velocity.y < 0.0:
 		return fallingState
-	
-	if Input.is_action_just_pressed("jump") and not parent.is_on_wall_only():
+
+	if Input.is_action_just_pressed("jump") and not parent.is_on_wall():
 		return glidingState
-		
+
+	if Input.is_action_just_pressed("jump") and parent.is_on_wall_only():
+		return self
+
 	if parent.velocity.y <= 0.0 and parent.is_on_floor():
 		return idleState
 	else:

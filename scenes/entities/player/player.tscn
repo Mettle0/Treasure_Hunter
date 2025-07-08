@@ -11,13 +11,18 @@
 [ext_resource type="Script" uid="uid://bjws45khr2yh2" path="res://scenes/entities/states/gliding.gd" id="8_5sj0x"]
 [ext_resource type="Script" uid="uid://1ctr0xaygd7x" path="res://scenes/entities/player/grabbing_ledge.gd" id="10_j0oqr"]
 [ext_resource type="Script" uid="uid://kpfrqdsier5d" path="res://scenes/entities/player/player_movement.gd" id="10_ovg4i"]
-[ext_resource type="Script" uid="uid://debxbg80w62ij" path="res://scenes/entities/states/state.gd" id="11_xy2vv"]
 [ext_resource type="Script" uid="uid://cam2fau5jb5mb" path="res://scenes/entities/states/parent_state.gd" id="12_j0oqr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_635qg"]
+albedo_color = Color(0.84812, 0.7205, 7.70092e-07, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yel1f"]
 material = SubResource("StandardMaterial3D_635qg")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xy2vv"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_j0oqr"]
 radius = 0.25
@@ -38,6 +43,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_yel1f")
 skeleton = NodePath("../..")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.49522, -0.421929)
+mesh = SubResource("CylinderMesh_xy2vv")
+
 [node name="Area Detection" type="Node3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49712, 0)
 script = ExtResource("4_nh4ur")
@@ -48,6 +57,7 @@ target_position = Vector3(0, 0, -0.6)
 collision_mask = 2
 
 [node name="Ledge Debug Sphere" type="MeshInstance3D" parent="Pivot/Area Detection"]
+visible = false
 mesh = SubResource("SphereMesh_j0oqr")
 
 [node name="Ledge Finder Ray" type="RayCast3D" parent="Pivot/Area Detection"]
@@ -93,11 +103,12 @@ grabbingLedgeState = NodePath("../Grabbing Ledge")
 air_movement_factor = 0.9
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
-[node name="Falling" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("idleState", "glideState", "moveState", "grabbingLedgeState")]
+[node name="Falling" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("idleState", "glideState", "moveState", "jumpState", "grabbingLedgeState")]
 script = ExtResource("7_5sj0x")
 idleState = NodePath("../../Grounded/Idle")
 glideState = NodePath("../Gliding")
 moveState = NodePath("../../Grounded/Moving")
+jumpState = NodePath("../Jumping")
 grabbingLedgeState = NodePath("../Grabbing Ledge")
 air_movement_factor = 0.9
 metadata/_custom_type_script = "uid://debxbg80w62ij"
@@ -114,10 +125,6 @@ script = ExtResource("10_j0oqr")
 jumpingState = NodePath("../Jumping")
 fallingState = NodePath("../Falling")
 ledgeGrabCooldownTimer = NodePath("../../../Cooldowns/Ledge Grab Cooldown")
-metadata/_custom_type_script = "uid://debxbg80w62ij"
-
-[node name="State" type="Node" parent="State Machine/Airborne"]
-script = ExtResource("11_xy2vv")
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
 [node name="Grounded" type="Node" parent="State Machine"]
@@ -139,5 +146,6 @@ fallState = NodePath("../../Airborne/Falling")
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
 [connection signal="facingLedge" from="Pivot/Area Detection" to="." method="_on_area_detection_facing_ledge"]
+[connection signal="facingWall" from="Pivot/Area Detection" to="." method="_on_area_detection_facing_wall"]
 [connection signal="timeout" from="Cooldowns/Ledge Grab Cooldown" to="." method="_on_ledge_grab_cooldown_timeout"]
 [connection signal="stateChange" from="State Machine" to="." method="_on_state_machine_state_change"]

@@ -25,22 +25,17 @@ extends CharacterBody3D
 @onready var camera_controller: CameraController = $CameraController
 @onready var capsule_model: MeshInstance3D = $Pivot/CapsuleModel
 
-
-
 var ledgeGrabPos: Vector3
 var ledgeGrabNormal: Vector3
-
 
 #Situational awareness checks for the player. What can the player do in this current moment?
 #Can be altered by cooldowns and state changes
 var can_ledgeGrab: bool = true
 var near_grabbableLedge: bool = false
 
-
 func _ready() -> void:
 	state_machine.setup(self, movement)
 	#EventBus.ledge_detected.connect(_on_ledge_detected)
-
 
 func _input(event: InputEvent) -> void:
 	state_machine.state_input(event)
@@ -49,28 +44,16 @@ func _physics_process(delta: float) -> void:
 	state_machine.state_physics(delta)
 	move_and_slide()
 
-
-#
-#func ledge_grab_state(ledgePos: Vector3) -> void:
-	#global_position = ledgePos - Vector3(0, 2.0, 0)
-	#velocity = Vector3.ZERO
-	#if Input.is_action_just_pressed("jump"):
-		#global_position += Vector3(1.0, 2.0, 0.0)
-		#state_machine.switch_state("Idle")
-		#ledge_grab_cooldown.start()
-
-
 #===INCOMING SIGNALS===#
 func _on_ledge_grab_cooldown_timeout() -> void:
 	can_ledgeGrab = true
 
-
-func _on_area_detection_facing_ledge(ledgePos: Vector3, ledge_normal: Vector3) -> void:
+func _on_area_detection_facing_ledge(ledgePos: Vector3) -> void:
 	ledgeGrabPos = ledgePos
-	ledgeGrabNormal = ledge_normal
 	near_grabbableLedge = true
-
-
 
 func _on_state_machine_state_change(currenStateName: StringName) -> void:
 	EventBus.playerStateChange.emit(currenStateName)
+
+func _on_area_detection_facing_wall(wall_collision_normal: Vector3) -> void:
+	ledgeGrabNormal = wall_collision_normal
