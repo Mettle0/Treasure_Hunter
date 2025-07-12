@@ -27,6 +27,7 @@ script = ExtResource("2_tipki")
 visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="World" type="Node3D" parent="."]
 script = ExtResource("4_tipki")

@@ -4,32 +4,35 @@ extends State
 @export var fallingState: State
 @export var glidingState: State
 @export var grabbingLedgeState: State
+@export var wallSlideState: State
 
+@onready var wall_slide_cooldown: Timer = %"Wall Slide Cooldown"
 @export var air_movement_factor: float
 
 var movement_input: Vector2
 
 func enter_state() -> void:
-	if parent.is_on_wall_only():
-		parent.velocity.x = -parent.jump_velocity*parent.ledgeGrabNormal.x
-		parent.velocity.z = -parent.jump_velocity*parent.ledgeGrabNormal.z
+	#if parent.is_on_wall_only():
+		#parent.velocity.x = -parent.jump_velocity*parent.wallNormal.x
+		#parent.velocity.z = -parent.jump_velocity*parent.wallNormal.z
 	parent.velocity.y = -parent.jump_velocity
 
 
 func state_physics(delta) -> State:
 	var gravity = parent.jump_gravity if parent.velocity.y > 0.0 else parent.fall_gravity
 	parent.velocity.y -= gravity * delta
-
+	
+	
 	horizontal_movement_air()
-
+	
+	if parent.can_wallslide and wall_slide_cooldown.is_stopped():
+		return wallSlideState
+	
 	if parent.velocity.y < 0.0:
 		return fallingState
 
 	if Input.is_action_just_pressed("jump") and not parent.is_on_wall():
 		return glidingState
-
-	if Input.is_action_just_pressed("jump") and parent.is_on_wall_only():
-		return self
 
 	if parent.velocity.y <= 0.0 and parent.is_on_floor():
 		return idleState

@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://bjws45khr2yh2" path="res://scenes/entities/states/gliding.gd" id="8_5sj0x"]
 [ext_resource type="Script" uid="uid://1ctr0xaygd7x" path="res://scenes/entities/player/grabbing_ledge.gd" id="10_j0oqr"]
 [ext_resource type="Script" uid="uid://kpfrqdsier5d" path="res://scenes/entities/player/player_movement.gd" id="10_ovg4i"]
+[ext_resource type="Script" uid="uid://b3iwlnh4i6t7g" path="res://scenes/entities/player/wall_slide.gd" id="11_xy2vv"]
 [ext_resource type="Script" uid="uid://cam2fau5jb5mb" path="res://scenes/entities/states/parent_state.gd" id="12_j0oqr"]
+[ext_resource type="Script" uid="uid://vngpjqlkqx53" path="res://scenes/entities/player/wall_jump.gd" id="12_r4dfn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_635qg"]
 albedo_color = Color(0.84812, 0.7205, 7.70092e-07, 1)
@@ -19,59 +21,57 @@ albedo_color = Color(0.84812, 0.7205, 7.70092e-07, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yel1f"]
 material = SubResource("StandardMaterial3D_635qg")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_xy2vv"]
-top_radius = 0.25
-bottom_radius = 0.25
-height = 0.2
-
-[sub_resource type="SphereMesh" id="SphereMesh_j0oqr"]
-radius = 0.25
-height = 0.5
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_635qg"]
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_1hmtu")
-jump_height = 3.0
-jump_time_to_descent = 0.4
+jump_height = 3.5
+jump_time_to_peak = 0.45
+jump_time_to_descent = 0.5
+base_speed = 12.5
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="CapsuleModel" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_yel1f")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.49522, -0.421929)
-mesh = SubResource("CylinderMesh_xy2vv")
-
 [node name="Area Detection" type="Node3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49712, 0)
 script = ExtResource("4_nh4ur")
 
-[node name="Wall Detection Ray" type="RayCast3D" parent="Pivot/Area Detection"]
+[node name="Ledge Detection" type="Node3D" parent="Pivot/Area Detection"]
+
+[node name="Wall Detection Ray" type="RayCast3D" parent="Pivot/Area Detection/Ledge Detection"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-target_position = Vector3(0, 0, -0.6)
+target_position = Vector3(0, 0, -0.75)
 collision_mask = 2
 
-[node name="Ledge Debug Sphere" type="MeshInstance3D" parent="Pivot/Area Detection"]
-visible = false
-mesh = SubResource("SphereMesh_j0oqr")
-
-[node name="Ledge Finder Ray" type="RayCast3D" parent="Pivot/Area Detection"]
+[node name="Ledge Finder Ray" type="RayCast3D" parent="Pivot/Area Detection/Ledge Detection"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, -0.6)
 target_position = Vector3(0, -0.25, 0)
 collision_mask = 2
 
+[node name="Wall Slide Detection" type="Node3D" parent="Pivot/Area Detection"]
+
+[node name="Upper RayCast" type="RayCast3D" parent="Pivot/Area Detection/Wall Slide Detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87867, 0)
+target_position = Vector3(0, 0, -0.75)
+collision_mask = 2
+
+[node name="Lower RayCast" type="RayCast3D" parent="Pivot/Area Detection/Wall Slide Detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.910287, 0)
+target_position = Vector3(0, 0, -0.75)
+collision_mask = 2
+
 [node name="CameraController" parent="." instance=ExtResource("2_635qg")]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.4, 0)
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0)
 min_limit_x = -0.8
 max_limit_x = -0.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144043, 0.998355, 0.000361919)
 shape = SubResource("CapsuleShape3D_635qg")
 
 [node name="Movement" type="Node" parent="." node_paths=PackedStringArray("camController")]
@@ -85,6 +85,11 @@ metadata/_custom_type_script = "uid://bptuhwmtcnpjg"
 wait_time = 0.5
 one_shot = true
 
+[node name="Wall Slide Cooldown" type="Timer" parent="Cooldowns"]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("init_state")]
 script = ExtResource("3_nh4ur")
 init_state = NodePath("Grounded/Idle")
@@ -94,22 +99,24 @@ metadata/_custom_type_script = "uid://boga78vm8cc6u"
 script = ExtResource("12_j0oqr")
 metadata/_custom_type_script = "uid://cam2fau5jb5mb"
 
-[node name="Jumping" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("idleState", "fallingState", "glidingState", "grabbingLedgeState")]
+[node name="Jumping" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("idleState", "fallingState", "glidingState", "grabbingLedgeState", "wallSlideState")]
 script = ExtResource("6_1murt")
 idleState = NodePath("../../Grounded/Idle")
 fallingState = NodePath("../Falling")
 glidingState = NodePath("../Gliding")
 grabbingLedgeState = NodePath("../Grabbing Ledge")
+wallSlideState = NodePath("../Wall Slide")
 air_movement_factor = 0.9
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
-[node name="Falling" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("idleState", "glideState", "moveState", "jumpState", "grabbingLedgeState")]
+[node name="Falling" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("idleState", "glideState", "moveState", "jumpState", "grabbingLedgeState", "wallSlideState")]
 script = ExtResource("7_5sj0x")
 idleState = NodePath("../../Grounded/Idle")
 glideState = NodePath("../Gliding")
 moveState = NodePath("../../Grounded/Moving")
 jumpState = NodePath("../Jumping")
 grabbingLedgeState = NodePath("../Grabbing Ledge")
+wallSlideState = NodePath("../Wall Slide")
 air_movement_factor = 0.9
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
@@ -125,6 +132,20 @@ script = ExtResource("10_j0oqr")
 jumpingState = NodePath("../Jumping")
 fallingState = NodePath("../Falling")
 ledgeGrabCooldownTimer = NodePath("../../../Cooldowns/Ledge Grab Cooldown")
+metadata/_custom_type_script = "uid://debxbg80w62ij"
+
+[node name="Wall Slide" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("idleState", "wallJump")]
+script = ExtResource("11_xy2vv")
+idleState = NodePath("../../Grounded/Idle")
+wallJump = NodePath("../Wall Jump")
+wall_slide_factor = 0.5
+metadata/_custom_type_script = "uid://debxbg80w62ij"
+
+[node name="Wall Jump" type="Node" parent="State Machine/Airborne" node_paths=PackedStringArray("fallingState")]
+script = ExtResource("12_r4dfn")
+fallingState = NodePath("../Falling")
+horizontal_air_speed = 15.0
+wall_jump_height = 15.0
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
 [node name="Grounded" type="Node" parent="State Machine"]
@@ -146,6 +167,5 @@ fallState = NodePath("../../Airborne/Falling")
 metadata/_custom_type_script = "uid://debxbg80w62ij"
 
 [connection signal="facingLedge" from="Pivot/Area Detection" to="." method="_on_area_detection_facing_ledge"]
-[connection signal="facingWall" from="Pivot/Area Detection" to="." method="_on_area_detection_facing_wall"]
 [connection signal="timeout" from="Cooldowns/Ledge Grab Cooldown" to="." method="_on_ledge_grab_cooldown_timeout"]
 [connection signal="stateChange" from="State Machine" to="." method="_on_state_machine_state_change"]

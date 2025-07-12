@@ -1,36 +1,49 @@
+class_name AreaDetection3D
 extends  Node3D
 
-#@onready var wall_detection_ray: RayCast3D = $"Wall Detection Ray"
-#@onready var ledge_detector: Node3D = $"Ledge Detector"
-#@onready var ledge_detection_ray: RayCast3D = $"Ledge Detector/Ledge Detection Ray"
-@onready var ledge_debug_sphere: MeshInstance3D = $"Ledge Debug Sphere"
+
 @onready var player: Player = $"../.."
+
+#Ledge finding nodes
+@onready var ledge_finder_ray: RayCast3D = %"Ledge Finder Ray"
+@onready var wall_detection_ray: RayCast3D = %"Wall Detection Ray"
+
+#Wall sliding notes
+@onready var upper_ray_cast: RayCast3D = $"Wall Slide Detection/Upper RayCast"
+@onready var lower_ray_cast: RayCast3D = $"Wall Slide Detection/Lower RayCast"
 
 signal facingLedge(ledgePos: Vector3)
 signal facingWall(wall_collision_normal: Vector3)
 
-@onready var ledge_finder_ray: RayCast3D = $"Ledge Finder Ray"
-@onready var wall_detection_ray: RayCast3D = $"Wall Detection Ray"
-
-
-
 func _physics_process(delta: float) -> void:
-	if wall_detection_ray.is_colliding():# and player.can_ledgeGrab:
-		ledge_detection()
-		facingWall.emit(wall_detection_ray.get_collision_normal())
-	else:
-		player.near_grabbableLedge = false
-		player.ledgeGrabPos = Vector3.ZERO
-
-
-
+	ledge_detection()
+	wallslide_detection()
+	
+	
+	
+	
 func ledge_detection() -> void:
-	if ledge_finder_ray.is_colliding():
-		facingLedge.emit(ledge_finder_ray.get_collision_point())
-		ledge_debug_sphere.global_position = ledge_finder_ray.get_collision_point()
+	if wall_detection_ray.is_colliding():
+		player.facingWall = true
+		ledge_finder_ray.enabled = true
+		player.wallNormal = wall_detection_ray.get_collision_normal()
+		if ledge_finder_ray.is_colliding():
+			facingLedge.emit(ledge_finder_ray.get_collision_point())
+			player.can_ledgeGrab = true
+		else:
+			player.wallNormal = Vector3.ZERO
+			player.can_ledgeGrab = false
+	else: #Tell the player they're not facing a wall, and not near a grabbable ledge.
+		player.facingWall = false
+		player.near_grabbableLedge = false
+		ledge_finder_ray.enabled = false
+		player.ledgeGrabPos = Vector3.ZERO
+		
+
+
+func wallslide_detection() -> void:
+	if player.is_on_wall_only() and upper_ray_cast.is_colliding() and lower_ray_cast.is_colliding():
+		player.wallNormal = upper_ray_cast.get_collision_normal()
+		player.can_wallslide = true
 	else:
-		ledge_debug_sphere.visible = false
-
-	
-
-	
+		player.can_wallslide = false

@@ -9,7 +9,6 @@ extends State
 func state_physics(delta: float) -> State:
 	var movement_input = movement.get_direction()
 	var vel_2d = Vector2(parent.velocity.x, parent.velocity.z)
-	
 	if movement_input:
 		vel_2d = movement_input * parent.base_speed
 		parent.velocity.x = vel_2d.x

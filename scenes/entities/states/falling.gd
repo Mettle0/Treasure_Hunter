@@ -5,13 +5,15 @@ extends State
 @export var moveState: State
 @export var jumpState: State
 @export var grabbingLedgeState: State
+@export var wallSlideState: State
+
+@onready var wall_slide_cooldown: Timer = %"Wall Slide Cooldown"
 @export var air_movement_factor: float
 
 var movement_input: Vector2
 
 func state_physics(delta) -> State:
-	if parent.is_on_wall_only() and Input.is_action_just_pressed("jump"):
-		return jumpState
+	
 	
 	if parent.near_grabbableLedge and parent.can_ledgeGrab:
 		return grabbingLedgeState
@@ -19,6 +21,9 @@ func state_physics(delta) -> State:
 	if Input.is_action_just_pressed("jump"):
 		return glideState
 	horizontal_movement_air()
+	
+	if parent.can_wallslide and wall_slide_cooldown.is_stopped():
+		return wallSlideState
 	
 	parent.velocity.y -= parent.fall_gravity * delta
 	if parent.is_on_floor():
@@ -39,7 +44,6 @@ func horizontal_movement_air() -> void:
 		parent.velocity.z = vel_2d.y*air_movement_factor
 		parent.pivot.look_at(parent.global_position+Vector3(parent.velocity.x,0, parent.velocity.z), Vector3.UP)
 	else:
-		vel_2d = vel_2d.lerp(Vector2.ZERO,0.1)
-		#vel_2d = vel_2d.move_toward(Vector2.ZERO, parent.base_speed*0.05)
+		vel_2d = vel_2d.move_toward(Vector2.ZERO, parent.base_speed*0.005)
 		parent.velocity.x = vel_2d.x
 		parent.velocity.z = vel_2d.y
