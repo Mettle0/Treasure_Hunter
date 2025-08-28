@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ewtu2jr88rpt"]
+
+[ext_resource type="Texture2D" uid="uid://dcs2qv4arolr1" path="res://textures/street-left.png" id="1_asyr4"]
+
+[resource]
+albedo_texture = ExtResource("1_asyr4")
+metallic_specular = 0.0
+texture_filter = 2

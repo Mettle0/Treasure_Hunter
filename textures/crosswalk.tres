@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bra6o5ce3vdjj"]
+
+[ext_resource type="Texture2D" uid="uid://crwbpabl8lmkh" path="res://textures/crosswalk.png" id="1_lxmuy"]
+
+[resource]
+albedo_texture = ExtResource("1_lxmuy")
+metallic_specular = 0.0
+texture_filter = 2

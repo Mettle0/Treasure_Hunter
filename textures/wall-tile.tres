@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cn6jr07b4e4fm"]
+
+[ext_resource type="Texture2D" uid="uid://kxp43voyupkm" path="res://textures/wall-tile.png" id="1_3lx6m"]
+
+[resource]
+albedo_texture = ExtResource("1_3lx6m")
+metallic_specular = 0.0
+texture_filter = 2
