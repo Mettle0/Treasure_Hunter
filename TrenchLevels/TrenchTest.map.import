@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://c51kyut4upt2j"
+path="res://.godot/imported/TrenchTest.map-9c0e584f486174e6d81909b31a09eb76.tres"
+
+[deps]
+
+source_file="res://TrenchLevels/TrenchTest.map"
+dest_files=["res://.godot/imported/TrenchTest.map-9c0e584f486174e6d81909b31a09eb76.tres"]
+
+[params]
+
